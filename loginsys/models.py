@@ -8,7 +8,7 @@ class Profile(models.Model):
         db_table = 'profile'
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     location = models.CharField(max_length=30, blank=True)
-    birth_date = models.DateTime(null=True, blank=True)
+    birth_date = models.DateTimeField(null=True, blank=True)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

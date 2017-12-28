@@ -1,9 +1,16 @@
 from django.db import models
-from django.contrib.auth.models import User
+from loginsys.models import Profile
+
+class ArticleGroup(models.Model):
+    class Meta:
+        db_table = 'article_group'
+    name = models.CharField(max_length=100)
 
 class Article(models.Model):
     class Meta:
         db_table = 'article'
-    article_title = models.CharField(max_length=200)
-    article_text = models.TextField()
-
+    title = models.CharField(max_length=200)
+    text = models.TextField()
+    article_group = models.ForeignKey(ArticleGroup, on_delete=models.CASCADE)
+    publish_date = models.DateTimeField()
+    author = models.ForeignKey(Profile, on_delete=models.CASCADE)
