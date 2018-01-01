@@ -1,0 +1,19 @@
+h1{
+	font-weight: 9000px;
+}
+/*div{
+	border: 1;
+	border-style: solid;
+	border-color: #fff;
+}*/
+
+.baner-top{
+	background: url(../img/baner-top.jpg);
+	height: 20vh;
+}
+/*#c1{
+	height: 20vh;	
+}*/
+.white{
+	color: #fff;
+}

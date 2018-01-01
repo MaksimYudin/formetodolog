@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+
+{% block news %}
+
+    <h5>Дата публикации: {{ news_detail.publish_date }}</h5>
+    <h5>{{ news_detail.title }}</a></h5>
+    <p>{{ news_detail.text }}</p>
+    <hr>
+
+{% endblock %}

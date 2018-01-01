@@ -1,5 +1,13 @@
-{% extends 'main.html' %}
+{% extends 'index.html' %}
 
 {% block news %}
-<p>Здесь новости</p>
+
+<h1>Новости</h1>
+{% for news_detail in news_list %}
+    <h5>Дата публикации: {{ news_detail.publish_date }}</h5>
+    <h5><a href="{% url 'news:news_detail' news_detail.id %}">{{ news_detail.title }}</a></h5>
+    <p>{{ news_detail.text  | truncatechars:200 }}</p>
+    <hr>
+{% endfor %}
+
 {% endblock %}
