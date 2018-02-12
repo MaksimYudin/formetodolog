@@ -18,9 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from formetodolog import settings
+#from formetodolog.loginsys.views import SignupView
+from loginsys.views import SignupView, LoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('news.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    path('auth/', include('loginsys.urls')),
+    path('account/login/', LoginView.as_view(), name="account_login"),
+    path("account/signup/", SignupView.as_view(), name="account_signup"),
+    path('account/', include("account.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

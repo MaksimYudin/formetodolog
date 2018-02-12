@@ -31,9 +31,9 @@
                     <section class="top-bar-section">
                         <ul class="right">
                             {% if user_name %}
-                                <li><a href="/account/logout/">Выйти {{ user_name }}</a></li>
+                                <li><a href="/auth/logout/">Выйти {{ user_name }}</a></li>
                             {% else %}
-                                <li><a href="/account/login/">Войти</a></li>
+                                <li><a href="/auth/login/">Войти</a></li>
                             {% endif %}
                         </ul>
                     </section>
@@ -71,18 +71,11 @@
   </div>
 </nav>
 <div class="row">
-  <div class="col-4">
-    <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Новости</a>
-      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Методистам</a>
-      <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Преподавателям</a>
-      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Родителям</a>
-    </div>
-  </div>
-  <div class="col-8">
+  <div class="col-12">
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-        {% block news %}{% endblock %}
+        {% block login %}{% endblock %}
+        {% block body %}{% endblock %}
       </div>
       <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
       <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
@@ -91,27 +84,6 @@
   </div>
 </div>
 
-<!--
-<div id="sectionAbout">
-	
-</div>
-<div id="sectionMethod">
-	
-</div>
-<div id="sectionTeacher">
-	
-</div>
-
-  		<div class="row justify-content-between">
-  			<div class="col-4">
-  				<a class="navbar-brands" href="#">
-  				fdfdf
-  				</a>
-  			</div>
-  			<div class="col-4">
-  				<p>Значок для слепых</p>
-  			</div>
-  		</div> -->
   	</div>
 	</div>
 

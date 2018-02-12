@@ -42,6 +42,11 @@ INSTALLED_APPS = [
     'news',
     'ckeditor',
     'ckeditor_uploader',
+    # django-user-accounts
+    'django.contrib.sites',
+    'account',
+    "pinax.templates",
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +57,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # django-user-accounts
+    #'account.middleware.LocaleMiddleware',
+    #'account.middleware.TimezoneMiddleware',
+]
+
+MIDDLEWARE_CLASSES = [
+    'account.middleware.LocaleMiddleware',
+    'account.middleware.TimezoneMiddleware',
 ]
 
 ROOT_URLCONF = 'formetodolog.urls'
@@ -67,6 +80,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # django-user-accounts
+                'account.context_processors.account',
             ],
         },
     },
@@ -86,6 +101,9 @@ DATABASES = {
         'PASSWORD' : 'django',
         'HOST' : '127.0.0.1',
         'PORT' : '5432',
+        #'TEST': {
+        #    'NAME': 'test_metodist_db',
+        #}
     }
 }
 
@@ -114,7 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-Ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -137,3 +155,51 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+DATE_INPUT_FORMATS = (
+    '%d.%m.%Y', '%d.%m.%Y', '%d.%m.%y',  # '25.10.2006', '25.10.2006', '25.10.06'
+    '%d-%m-%Y', '%d/%m/%Y', '%d/%m/%y',  # '25-10-2006', '25/10/2006', '25/10/06'
+    '%d %b %Y',  # '25 Oct 2006',
+    '%d %B %Y',  # '25 October 2006',
+)
+DATE_FORMAT = 'j F Y'
+TIME_FORMAT = 'H:i'
+DATETIME_FORMAT = 'j F Y H:i'
+YEAR_MONTH_FORMAT = 'F Y'
+MONTH_DAY_FORMAT = 'j F'
+SHORT_DATE_FORMAT = 'j N Y'
+SHORT_DATETIME_FORMAT = 'j N Y H:i'
+FIRST_DAY_OF_WEEK = 1
+
+LOGIN_URL = '/auth/login/'
+
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'testsite_app'
+EMAIL_HOST_PASSWORD = 'mys3cr3tp4ssw0rd'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
+
+# django-user-accounts
+# https://habrahabr.ru/post/341704/
+ACCOUNT_EMAIL_UNIQUE = True
+ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
+SITE_ID = 2
+AUTHENTICATION_BACKENDS = [
+    'account.auth_backends.EmailAuthenticationBackend',
+]
+ACCOUNT_USER_DISPLAY = lambda user: user.email
+
+#ACCOUNT_LOGIN_URL = 'loginsys:account_login'
+#ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = ACCOUNT_LOGIN_URL
+#ACCOUNT_PASSWORD_RESET_REDIRECT_URL = ACCOUNT_LOGIN_URL
+#ACCOUNT_EMAIL_CONFIRMATION_URL = "loginsys:account_confirm_email"
+ACCOUNT_SETTINGS_REDIRECT_URL = 'loginsys:account_settings'
+ACCOUNT_PASSWORD_CHANGE_REDIRECT_URL = "loginsys:account_password"
+
+DEFAULT_FROM_EMAIL = 'max_spb_web@mail.ru'
+EMAIL_HOST = "smtp.mail.ru"
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'max_spb_web'
+EMAIL_HOST_PASSWORD = 'frimen123'

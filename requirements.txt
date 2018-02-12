@@ -1,0 +1,13 @@
+Django==2.0.1
+django-appconf==1.0.2
+django-bootstrap-datepicker==1.2.3
+django-ckeditor==5.4.0
+django-js-asset==0.1.1
+django-user-accounts==2.0.3
+olefile==0.44
+Pillow==4.3.0
+psycopg2==2.7.3.2
+pytz==2017.3
+django-user-accounts==2.0.3
+pinax-templates==1.0.0
+django-bootstrap3==9.1.0
