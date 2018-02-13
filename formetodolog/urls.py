@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('news.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    path('auth/', include('loginsys.urls')),
+    #path('auth/', include('loginsys.urls')),
     path('account/login/', LoginView.as_view(), name="account_login"),
     path("account/signup/", SignupView.as_view(), name="account_signup"),
     path('account/', include("account.urls")),

@@ -171,8 +171,9 @@ SHORT_DATE_FORMAT = 'j N Y'
 SHORT_DATETIME_FORMAT = 'j N Y H:i'
 FIRST_DAY_OF_WEEK = 1
 
-LOGIN_URL = '/auth/login/'
+LOGIN_URL = '/account/login/'
 
+'''
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
@@ -180,6 +181,7 @@ EMAIL_HOST_USER = 'testsite_app'
 EMAIL_HOST_PASSWORD = 'mys3cr3tp4ssw0rd'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
+'''
 
 # django-user-accounts
 # https://habrahabr.ru/post/341704/
@@ -191,15 +193,19 @@ AUTHENTICATION_BACKENDS = [
 ]
 ACCOUNT_USER_DISPLAY = lambda user: user.email
 
+ACCOUNT_LOGIN_REDIRECT_URL = 'news:news'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'news:news'
+
 #ACCOUNT_LOGIN_URL = 'loginsys:account_login'
 #ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = ACCOUNT_LOGIN_URL
 #ACCOUNT_PASSWORD_RESET_REDIRECT_URL = ACCOUNT_LOGIN_URL
 #ACCOUNT_EMAIL_CONFIRMATION_URL = "loginsys:account_confirm_email"
-ACCOUNT_SETTINGS_REDIRECT_URL = 'loginsys:account_settings'
-ACCOUNT_PASSWORD_CHANGE_REDIRECT_URL = "loginsys:account_password"
+#ACCOUNT_SETTINGS_REDIRECT_URL = 'loginsys:account_settings'
+#ACCOUNT_PASSWORD_CHANGE_REDIRECT_URL = "loginsys:account_password"
 
 DEFAULT_FROM_EMAIL = 'max_spb_web@mail.ru'
 EMAIL_HOST = "smtp.mail.ru"
 EMAIL_PORT = 25
 EMAIL_HOST_USER = 'max_spb_web'
 EMAIL_HOST_PASSWORD = 'frimen123'
+EMAIL_USE_TLS = True

@@ -31,7 +31,11 @@
                     <section class="top-bar-section">
                         <ul class="right">
                             {% if user_name %}
-                                <li><a href="/account/logout/">Выйти {{ user_name }}</a></li>
+                                <!--<li><a href="/account/logout/">Выйти {{ user_name }}</a></li>-->
+                                <form name="create_station" method="post" action="/account/logout/">
+                                    {% csrf_token %}
+                                    <input type="submit" value="Выйти" />
+                                </form>
                             {% else %}
                                 <li><a href="/account/login/">Войти</a></li>
                             {% endif %}
